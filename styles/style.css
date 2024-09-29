@@ -15,17 +15,18 @@
 */
 
 .page {
-  margin: 0 auto;
-  font-variation-settings: "wght" var(--text-weight);
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  max-width: 700px;
   font-size: 18px;
   font-family: var(--font-main-family);
   background-color: var(--background-color);
   color: var(--text-color);
   background-size: cover;
   background-attachment: fixed;
+  font-variation-settings:
+  'wght' var(--text-weight),
+  'wdth' 100,
+  'opsz' 0;
   background-image: 
   repeating-linear-gradient(
     to right, 
@@ -49,11 +50,14 @@
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-inline-size: 700px;
   font-family: var(--font-accent-family);
-  font-variation-settings: "wght" var(--title-weight);
   border: 2px solid var(--stroke-clr);
   background: var(--background-header);
-  margin: 100px 0;
+  margin: 100px auto 100px;
   padding: 136px 0 24px;
   text-align: center;
 }
@@ -65,13 +69,24 @@
   }
 }
 
+.header__widht {
+  inline-size: 100%;
+}
 .header__link {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-transform: uppercase;
+
+  &:focus {
+    outline: none; 
+  }
 }
 
 .title {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  font-variation-settings:
+  'wght' var(--title-weight),
+  'wdth' 100,
+  'opsz' 0;
   text-transform: uppercase;
   margin: 20px 0 25px;
 }
@@ -81,16 +96,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: -moz-min-content;
-  width: min-content;
   text-align: start;
-  margin: 0 45.1%;
-}
-
-@media (width <= 375px) {
-  .theme-menu__list {
-    margin: 0 41.1%;
-  }
+  margin-left: 18px;
 }
 
 .theme-menu__item {
@@ -151,14 +158,18 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 48px
+  margin: auto;
+  align-items: center;
+  max-inline-size: 700px;
+  gap: 49px;
 }
 
 .section {
-  display: inherit;
-  flex-direction: inherit;
+  display: grid;
   gap: inherit;
 }
+
+* { outline: 1px solid цвет; }
 
 .article {
   border: 2px solid var(--stroke-clr);
@@ -167,7 +178,10 @@
 
 .heading {
   font-size: 18px;
-  font-feature-settings: "wght" var(--title-weight);
+  font-variation-settings:
+  'wght' var(--title-weight),
+  'wdth' 100,
+  'opsz' 0;
   padding: 4px 10px;
 }
 
@@ -182,7 +196,7 @@
 
 @media (width <= 375px) {
   .main {
-    gap: 51px
+    gap: 50px
   }
   .image-container {
     width: 375px;
@@ -200,8 +214,10 @@
 
 .image-label {
   font-family: var(--font-accent-family);
-  font-size: 14px;
-  font-variation-settings: "wght" var(--text-weight);
+  font-variation-settings:
+  'wght' var(--text-weight),
+  'wdth' 100,
+  'opsz' 0;
   z-index: 1;
   opacity: 0.5;
   mix-blend-mode: hard-light;
@@ -222,12 +238,15 @@
 }
 
 .text-container {
-  padding: 27px 25px;
+  line-height: 21px;
+  padding: 28.5px 28px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 26px;
 }
+
+
 
 @media (width <= 375px) {
   .image-label {
@@ -235,14 +254,16 @@
     top: 24px;
   }
   .text-container {
-    padding: 26px 25px;
-    gap: 25.5px;
+    padding: 26px 28px;
+    gap: 26px;
   }
 }
 
 .text {
-  font-variation-settings: "wght" var(--text-weight);
-  line-height: 21px;
+  font-variation-settings:
+  'wght' var(--text-weight),
+  'wdth' 100,
+  'opsz' 0;
 }
 
 .card__icon-button {
@@ -270,7 +291,7 @@
   display: flex;
   align-items: center;
   justify-content: end;
-  gap: 6px;
+  gap: 5px;
 }
 
 @media (width <= 375px) {
@@ -317,12 +338,14 @@
 
 .like-icon .heart {
   transform-origin: center center;
+  animation-timing-function: linear;
 }
 
 .like-icon .contour {
   fill: var(--text-color);
   transition-delay: 0.06s;
   transition-duration: 0.3s;
+  animation-timing-function: linear;
 }
 
 .like-icon .main-body {
@@ -332,12 +355,13 @@
 
 .like-icon .core {
   fill: var(--background-color);
-  transition: fill 0.3s 0.03s;
+  transition: fill 0.3s 0.03s linear;
 }
 
 .like-icon .sparks {
   opacity: 0;
   fill: var(--heart-color);
+  animation-timing-function: linear;
 }
 
 .like-icon:hover .main-body {
@@ -364,18 +388,21 @@
   fill: var(--heart-color);
   transition-delay: 0.06s;
   transition-duration: 0.3s;
+  animation-timing-function: linear;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--heart-color);
   transition-delay: 0.05s;
   transition-duration: 0.3s;
+  animation-timing-function: linear;
 }
 
 .like-icon.is-liked .core {
   fill: var(--heart-color);
   transition-delay: 0s;
   transition-duration: 0.3s;
+  animation-timing-function: linear;
 }
 
 .button {
@@ -428,7 +455,7 @@
   padding: 15px 20px;
   margin: 0 auto 105px;
   display: flex;
-  gap: 8px;
+  gap: 9px;
   align-items: center;
   background: var(--background-color);
 }
